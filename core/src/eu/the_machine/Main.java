@@ -29,5 +29,6 @@ public class Main extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		img.dispose();
+		//test
 	}
 }
