@@ -10,6 +10,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		new LwjglApplication(new DungeonOfBale(), config);
 		//11.12.17 test
+		//Test test ENcryptDev 123
 //ttest
 		//testkommentar
 	}
