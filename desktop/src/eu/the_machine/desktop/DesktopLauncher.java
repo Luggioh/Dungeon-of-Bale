@@ -9,6 +9,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		new LwjglApplication(new DungeonOfBale(), config);
+		//11.12.17 test
 //ttest
 		//testkommentar
 	}
