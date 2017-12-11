@@ -1,4 +1,4 @@
-package de.dungeonofbale.entity.util;
+package de.dungeonofbale.util;
 
 import java.util.Random;
 
