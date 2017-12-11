@@ -18,15 +18,15 @@ public class Textures {
 	}
 	
 	private void init() {
-		addTexture("badlogic", "badlogic.jpg");
-		addTexture("player1", "player1.png");
-		addTexture("player2", "player2.png");
-		addTexture("player3", "player3.png");
-		addTexture("background", "WaldBG.jpg");
+		addTexture(TextureDirectory.ASSETS, "badlogic", "badlogic.jpg");
+		addTexture(TextureDirectory.ASSETS, "player1", "player1.png");
+		addTexture(TextureDirectory.ASSETS, "player2", "player2.png");
+		addTexture(TextureDirectory.ASSETS, "player3", "player3.png");
+		addTexture(TextureDirectory.ASSETS, "background", "WaldBG.jpg");
 	}
 	
-	public void addTexture(String key, String textureName) {
-		textures.put(key, new Texture(textureName));
+	public void addTexture(TextureDirectory dir, String key, String textureName) {
+		textures.put(key, new Texture(dir.getPath() + textureName));
 	}
 	
 	public Texture getTexture(String key) {
@@ -42,6 +42,22 @@ public class Textures {
 			textures.get(keys).dispose();
 		}
 		textures.clear();
+	}
+	
+	public enum TextureDirectory {
+		
+		ASSETS("core/assets/"), SPRITES_CHARS("core/assets/Sprites_Chars/"), EINGESETZTE_TILES("core/assets/Eingesetzte_Tiles/");
+		
+		private String path;
+		
+		private TextureDirectory(String path) {
+			this.path = path;
+		}
+		
+		public String getPath() {
+			return path;
+		}
+		
 	}
 	
 }
