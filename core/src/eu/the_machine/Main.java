@@ -14,6 +14,7 @@ public class Main extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
+		//Okay schon wieder ein test
 	}
 	
 	//Teeeest made by EncryptDev //Teeest
