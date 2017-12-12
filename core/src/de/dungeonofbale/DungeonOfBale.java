@@ -23,7 +23,7 @@ import de.dungeonofbale.util.Textures;
 public class DungeonOfBale extends Game implements InputProcessor {
 
 	private static DungeonOfBale instance;
-
+	
 	private Textures textures;
 	private Player player;
 	private SpriteBatch batch;
@@ -38,6 +38,7 @@ public class DungeonOfBale extends Game implements InputProcessor {
 		 */
 		this.player = (Player) EntityRegestry.registerEntity(new Vector2(50, 50), textures.getTexture("player1"), 3,
 				EntityType.PLAYER);
+		
 
 		/* So erstellt man ein Entity. Dies hier dient nur als Test objekt */
 		EntityRegestry.registerEntity(new Vector2(500, 500), textures.getTexture("player2"), 3, EntityType.ENEMY);

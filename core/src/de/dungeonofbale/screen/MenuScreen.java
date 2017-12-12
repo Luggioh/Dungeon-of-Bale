@@ -17,7 +17,7 @@ public class MenuScreen extends AbstractScreen {
 	public MenuScreen(Game game, DungeonOfBale dob) {
 		super(game, dob);
 		this.batch = new SpriteBatch();
-		this.sprite = new Sprite(dob.getTextures().getTexture("background"));
+		this.sprite = new Sprite(dob.getTextures().getTexture("WaldBG"));
 		this.sprite.setSize(900, 700);
 		
 	}
