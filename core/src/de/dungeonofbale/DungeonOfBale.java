@@ -27,6 +27,7 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	private Textures textures;
 	private Player player;
 	private SpriteBatch batch;
+	private MenuScreen menuScreen;
 
 	/**
 	 * Diese Methode wird in der Methode: {@link GameScreen#show()} aufgerufen.
@@ -97,9 +98,9 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	public void create() {
 		instance = this;
 		textures = new Textures();
-
-		setScreen(new MenuScreen(this, this));
-		Gdx.input.setInputProcessor(this);
+		this.menuScreen = new MenuScreen(this, this);
+		setScreen(menuScreen);
+		Gdx.input.setInputProcessor(menuScreen.getStage());
 	}
 
 	@Override

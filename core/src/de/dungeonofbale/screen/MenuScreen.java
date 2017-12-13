@@ -2,24 +2,68 @@ package de.dungeonofbale.screen;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import de.dungeonofbale.DungeonOfBale;
+import de.dungeonofbale.ui.ButtonClickListener;
+import de.dungeonofbale.ui.UIHandler;
 
 public class MenuScreen extends AbstractScreen {
 	
 	private SpriteBatch batch;
 	private Sprite sprite;
 
+	/* Der Skin, ist eine vorlage für die Font, die Texturen*/
+	private Skin skin;
+	
+	/* Der UIHandler, managed die UIElemente
+	 * UIElemente sind folgende:
+	 * 
+	 * (Alles von com.badlogic.gdx.sceees.scene2d.ui)
+	 * Button
+	 * Label
+	 * TextArea
+	 * ImageButton
+	 * ImageTextButton
+	 * TextButton
+	 * 
+	 * */
+	private UIHandler uiHandler;
+	
+	/**
+	 * Der normale Screen Constructor
+	 * @param game
+	 * @param dob
+	 */
 	public MenuScreen(Game game, DungeonOfBale dob) {
 		super(game, dob);
 		this.batch = new SpriteBatch();
+		/* Der UIHandler wird erstellt */
+		this.uiHandler = new UIHandler();
 		this.sprite = new Sprite(dob.getTextures().getTexture("WaldBG"));
 		this.sprite.setSize(900, 700);
 		
+		/* Einen neune Skin erstellen, indem man den Pfad angibt zu der json Datei*/
+		this.skin = new Skin(Gdx.files.internal("core/assets/UI_Elements/uiskin.json"));
+		
+		/*Hier wird ein Button hinzugefügt. Gleiches gibt es auch mit TextArea und Label, oder anderen UIElemente*/
+		this.uiHandler.createTextButton("Starten", skin, new Vector2(100, 100), 0, 0, 0, new ButtonClickListener() {
+			
+			@Override
+			public void buttonClick(InputEvent paramEvent, float paramX, float paramY) {
+				game.setScreen(new GameScreen(game, dob));
+			}
+		});
+		
+		/* Hier wird ein Table erstellt, dies ist eine Art Gruppe für alle UIElemente. Dieser Table
+		 * wird dann in der gleichen Methode auch noch zu der Stage hinzugefügt.*/
+		this.uiHandler.createTable();
 	}
 
 	@Override
@@ -33,12 +77,12 @@ public class MenuScreen extends AbstractScreen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		batch.begin();
-		sprite.draw(batch);
-		batch.end();
 		
-		if(Gdx.input.isButtonPressed(Buttons.LEFT)) {
-			game.setScreen(new GameScreen(game, dob));
-		}
+		/* Hier wird die Stage gemalt. Sprich, das was wir oben im Constructor erstellt haben. */
+		this.uiHandler.draw(batch, delta);
+		sprite.draw(batch);
+		
+		batch.end();
 		
 	}
 
@@ -53,6 +97,13 @@ public class MenuScreen extends AbstractScreen {
 	@Override
 	public void hide() {
 	}
+	
+	public UIHandler getUiHandler() {
+		return uiHandler;
+	}
 
+	public Stage getStage() {
+		return uiHandler.getStage();
+	}
 
 }

@@ -1,6 +1,7 @@
 package de.dungeonofbale.screen;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 
 import de.dungeonofbale.DungeonOfBale;
 
@@ -12,6 +13,7 @@ public class GameScreen extends AbstractScreen {
 
 	public GameScreen(Game game, DungeonOfBale dob) {
 		super(game, dob);
+		Gdx.input.setInputProcessor(dob);
 	}
 
 	@Override

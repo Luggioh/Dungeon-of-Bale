@@ -25,6 +25,8 @@ public class Textures {
 	 * kommen, bitte keinen neuen Ordner anlegen. Bitte sprecht es kurz mit mir
 	 * (EncryptDev) ab, wenn ihr einen neuen Ordner anlegt. (AUSER: Wenn ihr IM
 	 * assets bzw im "Sprites_Chars" oder "Eingesetzte_Tiles" Ordner einen neuen anlegt, dann geht es)
+	 * 
+	 * Der Key der Texturen ist jeweils der texturen namen ohne die endung. (Ohne .png bzw .jpg oder .gif)
 	 */
 	private void registerTextures() {
 
@@ -82,6 +84,11 @@ public class Textures {
 		}
 
 		for (File f : files) {
+			if(f.getName().equalsIgnoreCase("default.png") || f.getName().equalsIgnoreCase("uiskin.png")
+					|| f.getName().equalsIgnoreCase("default.fnt") || f.getName().equalsIgnoreCase("uiskin.atlas")
+					|| f.getName().equalsIgnoreCase("uiskin.json")) {
+				continue;
+			}
 			textures.put(f.getName().substring(0, f.getName().length() - 4), new Texture(f.getPath()));
 		}
 
