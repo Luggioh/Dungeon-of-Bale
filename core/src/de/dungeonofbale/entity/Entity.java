@@ -38,6 +38,13 @@ public class Entity {
 	private EntityAIAttack aiAttack;
 	private Collider<Circle> entityRangeCollider;
 	
+	public Entity() {
+	}
+	
+	public Entity(Entity entity) {
+		this(entity.getPosition(), entity.getTexture(), entity.getEntityRangeCollider().getType().radius);
+	}
+	
 	/**
 	 * 
 	 * @param position - Die Position wo das Entity gespawnt wird
@@ -159,5 +166,5 @@ public class Entity {
 	public Collider<Circle> getEntityRangeCollider() {
 		return entityRangeCollider;
 	}
-
+	
 }

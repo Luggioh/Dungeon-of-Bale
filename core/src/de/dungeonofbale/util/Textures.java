@@ -111,21 +111,5 @@ public class Textures {
 		textures.clear();
 	}
 
-	public enum TextureDirectory {
-
-		ASSETS("core/assets/"), SPRITES_CHARS("core/assets/Sprites_Chars/"), EINGESETZTE_TILES(
-				"core/assets/Eingesetzte_Tiles/");
-
-		private String path;
-
-		private TextureDirectory(String path) {
-			this.path = path;
-		}
-
-		public String getPath() {
-			return path;
-		}
-
-	}
 
 }

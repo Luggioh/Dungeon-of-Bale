@@ -28,6 +28,7 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	private Player player;
 	private SpriteBatch batch;
 	private MenuScreen menuScreen;
+	
 
 	/**
 	 * Diese Methode wird in der Methode: {@link GameScreen#show()} aufgerufen.
@@ -43,6 +44,8 @@ public class DungeonOfBale extends Game implements InputProcessor {
 
 		/* So erstellt man ein Entity. Dies hier dient nur als Test objekt */
 		EntityRegestry.registerEntity(new Vector2(500, 500), textures.getTexture("player2"), 3, EntityType.ENEMY);
+		EntityRegestry.registerEntity(new Vector2(70, 70), textures.getTexture("bgStones"), 3, EntityType.ENEMY);
+		
 	}
 
 	/**
@@ -59,7 +62,7 @@ public class DungeonOfBale extends Game implements InputProcessor {
 		/* Der Spieler wird geupdated. */
 		this.player.updateCamera();
 		this.player.moveEntity(delta);
-
+		
 		batch.begin();
 
 		/* Die Camera des Spielers wird hier an dem Spritebatch regestriert */
@@ -80,7 +83,7 @@ public class DungeonOfBale extends Game implements InputProcessor {
 				}
 			}
 			if (this.player.containsInCollideArea(all.getEntityRangeCollider())) {
-				this.player.pathfinding(all, 70, delta);
+				this.player.pathfinding(all, 10, delta);
 			}
 			if (all.containsInCollideArea(player.getEntityRangeCollider())) {
 				all.attack(player);

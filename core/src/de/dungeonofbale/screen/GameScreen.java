@@ -2,6 +2,7 @@ package de.dungeonofbale.screen;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import de.dungeonofbale.DungeonOfBale;
 
@@ -11,9 +12,13 @@ import de.dungeonofbale.DungeonOfBale;
  */
 public class GameScreen extends AbstractScreen {
 
+	private SpriteBatch batch;
+
 	public GameScreen(Game game, DungeonOfBale dob) {
 		super(game, dob);
+		this.batch = new SpriteBatch();
 		Gdx.input.setInputProcessor(dob);
+
 	}
 
 	@Override
@@ -24,6 +29,8 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	public void render(float delta) {
 		dob.update(delta);
+		batch.begin();
+		batch.end();
 	}
 
 	@Override

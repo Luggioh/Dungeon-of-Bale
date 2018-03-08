@@ -32,5 +32,21 @@ public class EngineMath {
 	public static int randomIdGenerator() {
 		return RANDOM.nextInt(100000);
 	}
+	
+	/**
+	 * Diese Methode gibt dir die eingegeben Zahl als Binärer Code wieder zurück
+	 * @param number
+	 * @return
+	 */
+	public static String getIntAsBinary(int number) {
+		StringBuilder binary = new StringBuilder();
+		for(int i = 31; i >= 0; i--) {
+			binary.append((number & (1 << i)) != 0 ? "1" : "0");
+			if(i % 8 == 0 && i != 0) {
+				binary.append(" ");
+			}
+		}
+		return binary.toString();
+	}
 
 }

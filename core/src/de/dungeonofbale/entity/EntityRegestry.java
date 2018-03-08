@@ -38,12 +38,15 @@ public class EntityRegestry {
 			ALL_ENTITYS.add(entity);
 			return entity;
 		case PLAYER:
-			Player player = new Player(position, texture, rangeColliderRadius);
+			player = new Player(position, texture, rangeColliderRadius);
 			player.setMovementController(new MovementController(player, Keys.W, Keys.A, Keys.S, Keys.D));
-			EntityRegestry.player = player;
 			return player;
 		}
 		return null;
+	}
+	
+	public static void registerEntity(Entity entity) {
+		ALL_ENTITYS.add(entity);
 	}
 	
 	/**
