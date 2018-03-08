@@ -1,37 +1,21 @@
 package de.dungeonofbale.util;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 
-/**
- * Hier werden die Texturen regestriert.
- *
- */
-public class Textures {
-
-	private HashMap<String, Texture> textures;
-
-	public Textures() {
-		textures = new HashMap<String, Texture>();
-		registerTextures();
+public class DOBAssetManager {
+	
+	private AssetManager assetManager;
+	
+	public DOBAssetManager() {
+		this.assetManager = new AssetManager();
 	}
-
-	/**
-	 * Diese Methode läd alle vorhandenen Texturen. WENN neue texturen dazu
-	 * kommen, bitte keinen neuen Ordner anlegen. Bitte sprecht es kurz mit mir
-	 * (EncryptDev) ab, wenn ihr einen neuen Ordner anlegt. (AUSER: Wenn ihr IM
-	 * assets bzw im "Sprites_Chars" oder "Eingesetzte_Tiles" Ordner einen neuen anlegt, dann geht es)
-	 * 
-	 * Der Key der Texturen ist jeweils der texturen namen ohne die endung. (Ohne .png bzw .jpg oder .gif)
-	 */
-	private void registerTextures() {
-
-		System.out.println("[DungeonOfBale] Loading textures...");
-
+	
+	public void loadImages() {
 		String path = "core/assets/";
 		List<File> folders = new LinkedList<>();
 
@@ -89,27 +73,18 @@ public class Textures {
 					|| f.getName().equalsIgnoreCase("uiskin.json")) {
 				continue;
 			}
-			textures.put(f.getName().substring(0, f.getName().length() - 4), new Texture(f.getPath()));
+			this.assetManager.load(path + f.getName(), Texture.class);
 		}
-
-		System.out.println("[DungeonOfBale] Textures loaded");
-
+		System.out.println("Finishing loading from assetmanager");
+		
 	}
-
-	public Texture getTexture(String key) {
-		return textures.get(key);
+	
+	public Texture getTexture(String name) {
+		return this.assetManager.get("core/assets/" + name);
 	}
-
-	public HashMap<String, Texture> getTextures() {
-		return textures;
+	
+	public AssetManager getAssetManager() {
+		return assetManager;
 	}
-
-	public void disposeAll() {
-		for (String keys : textures.keySet()) {
-			textures.get(keys).dispose();
-		}
-		textures.clear();
-	}
-
 
 }

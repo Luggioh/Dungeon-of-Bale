@@ -29,7 +29,7 @@ public class EntityAIAttack {
 			attackTime = System.currentTimeMillis() + (attackCooldownInSeconds * 1000);
 			System.out.println(other.health);
 			
-			other.changeTexture(DungeonOfBale.getInstance().getTextures().getTexture("bgSandstein"));
+			other.changeTexture(DungeonOfBale.getInstance().getDobAssetManager().getTexture("bgSandstein.png"));
 			
 			if(other.health <= 0) {
 				EntityRegestry.unregisterEntity(other);

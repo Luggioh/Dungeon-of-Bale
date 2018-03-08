@@ -35,6 +35,8 @@ public class MenuScreen extends AbstractScreen {
 	 * 
 	 * */
 	private UIHandler uiHandler;
+
+
 	
 	/**
 	 * Der normale Screen Constructor
@@ -46,7 +48,7 @@ public class MenuScreen extends AbstractScreen {
 		this.batch = new SpriteBatch();
 		/* Der UIHandler wird erstellt */
 		this.uiHandler = new UIHandler();
-		this.sprite = new Sprite(dob.getTextures().getTexture("WaldBG"));
+		this.sprite = new Sprite(dob.getDobAssetManager().getTexture("WaldBG.jpg"));
 		this.sprite.setSize(900, 700);
 		
 		/* Einen neune Skin erstellen, indem man den Pfad angibt zu der json Datei*/

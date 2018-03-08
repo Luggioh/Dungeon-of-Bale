@@ -13,7 +13,7 @@ import de.dungeonofbale.entity.Player;
 import de.dungeonofbale.entity.EntityRegestry.EntityType;
 import de.dungeonofbale.screen.GameScreen;
 import de.dungeonofbale.screen.MenuScreen;
-import de.dungeonofbale.util.Textures;
+import de.dungeonofbale.util.DOBAssetManager;
 
 /**
  * Haupt Klasse. Erbt aus {@link Game} und implementiert {@link InputProcessor}
@@ -24,10 +24,10 @@ public class DungeonOfBale extends Game implements InputProcessor {
 
 	private static DungeonOfBale instance;
 	
-	private Textures textures;
 	private Player player;
 	private SpriteBatch batch;
 	private MenuScreen menuScreen;
+	private DOBAssetManager dobAssetManager;
 	
 
 	/**
@@ -38,13 +38,13 @@ public class DungeonOfBale extends Game implements InputProcessor {
 		/*
 		 * Hier wird der Spieler erstellt 
 		 */
-		this.player = (Player) EntityRegestry.registerEntity(new Vector2(50, 50), textures.getTexture("player1"), 3,
+		this.player = (Player) EntityRegestry.registerEntity(new Vector2(50, 50), dobAssetManager.getTexture("player1.png"), 3,
 				EntityType.PLAYER);
 		
 
 		/* So erstellt man ein Entity. Dies hier dient nur als Test objekt */
-		EntityRegestry.registerEntity(new Vector2(500, 500), textures.getTexture("player2"), 3, EntityType.ENEMY);
-		EntityRegestry.registerEntity(new Vector2(70, 70), textures.getTexture("bgStones"), 3, EntityType.ENEMY);
+		EntityRegestry.registerEntity(new Vector2(500, 500), dobAssetManager.getTexture("player2.png"), 3, EntityType.ENEMY);
+		EntityRegestry.registerEntity(new Vector2(70, 70), dobAssetManager.getTexture("bgStones.png"), 3, EntityType.ENEMY);
 		
 	}
 
@@ -74,12 +74,12 @@ public class DungeonOfBale extends Game implements InputProcessor {
 		 */
 		for (Entity all : EntityRegestry.getAllEntitys()) {
 			if (this.player.isCollision(all)) {
-				if (this.player.getTexture() != textures.getTexture("player3")) {
-					this.player.changeTexture(textures.getTexture("player3"));
+				if (this.player.getTexture() != dobAssetManager.getTexture("player3.png")) {
+					this.player.changeTexture(dobAssetManager.getTexture("player3.png"));
 				}
 			} else {
-				if (this.player.getTexture() != textures.getTexture("player1")) {
-					this.player.changeTexture(textures.getTexture("player1"));
+				if (this.player.getTexture() != dobAssetManager.getTexture("player1.png")) {
+					this.player.changeTexture(dobAssetManager.getTexture("player1.png"));
 				}
 			}
 			if (this.player.containsInCollideArea(all.getEntityRangeCollider())) {
@@ -100,7 +100,11 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	@Override
 	public void create() {
 		instance = this;
-		textures = new Textures();
+		this.dobAssetManager = new DOBAssetManager();
+		this.dobAssetManager.loadImages();
+		this.dobAssetManager.getAssetManager().finishLoading();
+		
+		//textures = new Textures();
 		this.menuScreen = new MenuScreen(this, this);
 		setScreen(menuScreen);
 		Gdx.input.setInputProcessor(menuScreen.getStage());
@@ -118,7 +122,10 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	@Override
 	public void dispose() {
 		/* Hier werden die Sachen aus dem Speicher genommen */
-		textures.disposeAll();
+	}
+	
+	public DOBAssetManager getDobAssetManager() {
+		return dobAssetManager;
 	}
 
 	public SpriteBatch getBatch() {
@@ -131,10 +138,6 @@ public class DungeonOfBale extends Game implements InputProcessor {
 
 	// =================================I N P U T P R O C E S S O
 	// R==================================
-
-	public Textures getTextures() {
-		return textures;
-	}
 
 	public static DungeonOfBale getInstance() {
 		return instance;
