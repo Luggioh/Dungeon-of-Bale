@@ -103,8 +103,6 @@ public class DungeonOfBale extends Game implements InputProcessor {
 		this.dobAssetManager = new DOBAssetManager();
 		this.dobAssetManager.loadImages();
 		this.dobAssetManager.getAssetManager().finishLoading();
-		
-		//textures = new Textures();
 		this.menuScreen = new MenuScreen(this, this);
 		setScreen(menuScreen);
 		Gdx.input.setInputProcessor(menuScreen.getStage());

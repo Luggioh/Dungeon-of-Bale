@@ -20,7 +20,9 @@ public class DOBAssetManager {
 	 */
 	public void loadImages() {
 		String path = "core/assets/";
-
+		
+		System.out.println("Loading from assetmanager...");
+		
 		File dir = new File(path);
 		List<File> files = new LinkedList<>();
 		

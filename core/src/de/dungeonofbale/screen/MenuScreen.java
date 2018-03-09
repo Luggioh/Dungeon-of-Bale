@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import de.dungeonofbale.DungeonOfBale;
 import de.dungeonofbale.ui.ButtonClickListener;
@@ -20,7 +19,6 @@ public class MenuScreen extends AbstractScreen {
 	private Sprite sprite;
 
 	/* Der Skin, ist eine vorlage für die Font, die Texturen*/
-	private Skin skin;
 	
 	/* Der UIHandler, managed die UIElemente
 	 * UIElemente sind folgende:
@@ -47,15 +45,12 @@ public class MenuScreen extends AbstractScreen {
 		super(game, dob);
 		this.batch = new SpriteBatch();
 		/* Der UIHandler wird erstellt */
-		this.uiHandler = new UIHandler();
+		this.uiHandler = new UIHandler(null);
 		this.sprite = new Sprite(dob.getDobAssetManager().getTexture("WaldBG.jpg"));
 		this.sprite.setSize(900, 700);
 		
-		/* Einen neune Skin erstellen, indem man den Pfad angibt zu der json Datei*/
-		this.skin = new Skin(Gdx.files.internal("core/assets/UI_Elements/uiskin.json"));
-		
 		/*Hier wird ein Button hinzugefügt. Gleiches gibt es auch mit TextArea und Label, oder anderen UIElemente*/
-		this.uiHandler.createTextButton("Starten", skin, new Vector2(100, 100), 0, 0, 0, new ButtonClickListener() {
+		this.uiHandler.createTextButton("Starten", new Vector2(100, 100), 0, new ButtonClickListener() {
 			
 			@Override
 			public void buttonClick(InputEvent paramEvent, float paramX, float paramY) {

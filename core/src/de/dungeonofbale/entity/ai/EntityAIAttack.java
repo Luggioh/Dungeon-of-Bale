@@ -24,7 +24,7 @@ public class EntityAIAttack {
 	}
 	
 	public void attack(Entity other) {
-		if(System.currentTimeMillis() > attackTime) {
+		if(System.currentTimeMillis() > attackTime && other.health > 0) {
 			other.health -= attackDamage;
 			attackTime = System.currentTimeMillis() + (attackCooldownInSeconds * 1000);
 			System.out.println(other.health);
@@ -33,6 +33,7 @@ public class EntityAIAttack {
 			
 			if(other.health <= 0) {
 				EntityRegestry.unregisterEntity(other);
+				return;
 			}
 		}
 	}

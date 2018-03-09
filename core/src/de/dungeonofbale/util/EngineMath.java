@@ -27,10 +27,21 @@ public class EngineMath {
 	 * 
 	 * Diese methode returnt einen Random Integer.
 	 * 
+	 * @param max
+	 * 		Die Maximale Zahl, wie weit der {@code Random} gehen soll.
+	 * 
+	 * @return
+	 */
+	public static int randomIdGenerator(int max) {
+		return RANDOM.nextInt(max);
+	}
+	
+	/**
+	 * Gleiche Methode, wie {@code EngineMath#randomIdGenerator(int)}} nur mit, dem max Wert 100000
 	 * @return
 	 */
 	public static int randomIdGenerator() {
-		return RANDOM.nextInt(100000);
+		return randomIdGenerator(100000);
 	}
 	
 	/**
