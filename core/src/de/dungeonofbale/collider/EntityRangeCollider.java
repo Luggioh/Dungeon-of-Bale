@@ -51,4 +51,9 @@ public class EntityRangeCollider implements Collider<Circle> {
 		return this.circle;
 	}
 
+	@Override
+	public float getValue() {
+		return this.circle.radius;
+	}
+
 }

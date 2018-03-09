@@ -17,8 +17,6 @@ public class MenuScreen extends AbstractScreen {
 	
 	private SpriteBatch batch;
 	private Sprite sprite;
-
-	/* Der Skin, ist eine vorlage für die Font, die Texturen*/
 	
 	/* Der UIHandler, managed die UIElemente
 	 * UIElemente sind folgende:

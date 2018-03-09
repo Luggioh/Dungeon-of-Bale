@@ -2,6 +2,9 @@ package de.dungeonofbale.util;
 
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
+
 /**
  * Einfache Mathematik. Sehr einfache Mathematik.
  *
@@ -45,19 +48,27 @@ public class EngineMath {
 	}
 	
 	/**
-	 * Diese Methode gibt dir die eingegeben Zahl als Binärer Code wieder zurück
-	 * @param number
+	 * Hier bekommt man den Mittelpunkt der X Achse
 	 * @return
 	 */
-	public static String getIntAsBinary(int number) {
-		StringBuilder binary = new StringBuilder();
-		for(int i = 31; i >= 0; i--) {
-			binary.append((number & (1 << i)) != 0 ? "1" : "0");
-			if(i % 8 == 0 && i != 0) {
-				binary.append(" ");
-			}
-		}
-		return binary.toString();
+	public static int getMiddlePointX() {
+		return Gdx.graphics.getWidth() / 2;
 	}
-
+	
+	/**
+	 * Hier bekommt man den Mittelpunkt der Y Achse
+	 * @return
+	 */
+	public static int getMiddlePointY() {
+		return Gdx.graphics.getHeight() / 2;
+	}
+	
+	/**
+	 * Hier bekommt man den Mittelpunkt des Bildschirms als {@code Vector2}
+	 * @return
+	 */
+	public static Vector2 getMiddlePoint() {
+		return new Vector2(getMiddlePointX(), getMiddlePointY());
+	}
+	
 }

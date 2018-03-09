@@ -32,22 +32,22 @@ public class EntityAIPathfinding {
 
 		boolean changed = false;
 
-		if (EngineMath.isBetween(diffX, -other.getEntityRangeCollider().getType().radius, 0)) {
+		if (EngineMath.isBetween(diffX, -other.getEntityRangeCollider().getValue(), 0)) {
 
-			if (EngineMath.isBetween(diffY, -other.getEntityRangeCollider().getType().radius, 0)) {
+			if (EngineMath.isBetween(diffY, -other.getEntityRangeCollider().getValue(), 0)) {
 				other.getPosition().x -= speed * delta;
 				other.getPosition().y -= speed * delta;
-			} else if (EngineMath.isBetween(diffY, 0, other.getEntityRangeCollider().getType().radius)) {
+			} else if (EngineMath.isBetween(diffY, 0, other.getEntityRangeCollider().getValue())) {
 				other.getPosition().x -= speed * delta;
 				other.getPosition().y += speed * delta;
 			}
 			changed = true;
-		} else if (EngineMath.isBetween(diffX, 0, other.getEntityRangeCollider().getType().radius)) {
+		} else if (EngineMath.isBetween(diffX, 0, other.getEntityRangeCollider().getValue())) {
 
-			if (EngineMath.isBetween(diffY, -other.getEntityRangeCollider().getType().radius, 0)) {
+			if (EngineMath.isBetween(diffY, -other.getEntityRangeCollider().getValue(), 0)) {
 				other.getPosition().x += speed * delta;
 				other.getPosition().y -= speed * delta;
-			} else if (EngineMath.isBetween(diffY, 0, other.getEntityRangeCollider().getType().radius)) {
+			} else if (EngineMath.isBetween(diffY, 0, other.getEntityRangeCollider().getValue())) {
 				other.getPosition().x += speed * delta;
 				other.getPosition().y += speed * delta;
 			}

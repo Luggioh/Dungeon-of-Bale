@@ -13,4 +13,6 @@ public interface Collider<T> {
 	
 	T getType();
 	
+	float getValue();
+	
 }
