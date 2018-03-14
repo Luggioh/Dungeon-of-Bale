@@ -9,4 +9,9 @@ public class Enemy extends Entity {
 		super(position, texture, rangeColliderRadius);
 	}
 
+	@Override
+	public void define() {
+		
+	}
+
 }

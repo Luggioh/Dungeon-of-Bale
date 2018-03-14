@@ -14,7 +14,7 @@ import de.dungeonofbale.entity.ai.EntityAIPathfinding;
 import de.dungeonofbale.entity.ai.MovementController;
 import de.dungeonofbale.util.EngineMath;
 
-public class Entity {
+public abstract class Entity implements Definable {
 	
 	/* Final Variablen */
 	private final double maxHealth = 100;
@@ -61,6 +61,7 @@ public class Entity {
 		this.aiAttack = new EntityAIAttack(this, attackDamage);
 		this.entityRangeCollider = new EntityRangeCollider(position, rangeColliderRadius);
 		this.health = maxHealth;
+		this.define();
 	}
 	
 	/**

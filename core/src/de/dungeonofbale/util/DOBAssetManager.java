@@ -27,6 +27,8 @@ public class DOBAssetManager {
 		List<File> files = new LinkedList<>();
 		
 		for(File dirFiles : dir.listFiles()) {
+			if(dirFiles.isDirectory())
+				continue;
 			files.add(dirFiles);
 		}
 		

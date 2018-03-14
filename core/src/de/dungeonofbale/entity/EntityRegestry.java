@@ -33,10 +33,6 @@ public class EntityRegestry {
 			Enemy enemy = new Enemy(position, texture, rangeColliderRadius);
 			ALL_ENTITYS.add(enemy);
 			return enemy;
-		case ENTITY:
-			Entity entity = new Entity(position, texture, rangeColliderRadius);
-			ALL_ENTITYS.add(entity);
-			return entity;
 		case PLAYER:
 			player = new Player(position, texture, rangeColliderRadius);
 			player.setMovementController(new MovementController(player, Keys.W, Keys.A, Keys.S, Keys.D));
@@ -70,7 +66,7 @@ public class EntityRegestry {
 	
 	public enum EntityType {
 		
-		ENEMY, ENTITY, PLAYER;
+		ENEMY, PLAYER;
 		
 	}
 	

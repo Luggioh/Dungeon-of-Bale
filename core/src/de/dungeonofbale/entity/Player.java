@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -36,6 +38,14 @@ public class Player extends Entity {
 
 	public OrthographicCamera getCamera() {
 		return camera;
+	}
+
+	@Override
+	public void define() {
+		BodyDef bodyDef = new BodyDef();
+		bodyDef.position.set(this.getPosition().x, this.getPosition().y);
+		bodyDef.type = BodyType.DynamicBody;
+		
 	}
 
 }

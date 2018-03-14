@@ -18,7 +18,6 @@ public class GameScreen extends AbstractScreen {
 		super(game, dob);
 		this.batch = new SpriteBatch();
 		Gdx.input.setInputProcessor(dob);
-
 	}
 
 	@Override
@@ -29,6 +28,7 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	public void render(float delta) {
 		dob.update(delta);
+		
 		batch.begin();
 		batch.end();
 	}
