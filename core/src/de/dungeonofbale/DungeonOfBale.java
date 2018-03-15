@@ -17,7 +17,7 @@ import de.dungeonofbale.util.DOBAssetManager;
 
 /**
  * Haupt Klasse. Erbt aus {@link Game} und implementiert {@link InputProcessor}
- * Hier werden die nötigen Sachen erstellt, bzw regestriert.
+ * Hier werden die nötigen Sachen erstellt, bzw regestriert.eeeeee
  *
  */
 public class DungeonOfBale extends Game implements InputProcessor {
