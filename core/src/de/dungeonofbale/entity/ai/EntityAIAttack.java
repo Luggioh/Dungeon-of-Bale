@@ -1,6 +1,5 @@
 package de.dungeonofbale.entity.ai;
 
-import de.dungeonofbale.DungeonOfBale;
 import de.dungeonofbale.entity.Entity;
 import de.dungeonofbale.entity.EntityRegestry;
 
@@ -28,8 +27,6 @@ public class EntityAIAttack {
 			other.health -= attackDamage;
 			attackTime = System.currentTimeMillis() + (attackCooldownInSeconds * 1000);
 			System.out.println(other.health);
-			
-			other.changeTexture(DungeonOfBale.getInstance().getDobAssetManager().getTexture("bgSandstein.png"));
 			
 			if(other.health <= 0) {
 				EntityRegestry.unregisterEntity(other);

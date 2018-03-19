@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 import de.dungeonofbale.entity.ai.MovementController;
@@ -27,7 +27,7 @@ public class EntityRegestry {
 	 * @param entityType
 	 * @return
 	 */
-	public static Entity registerEntity(Vector2 position, Texture texture, float rangeColliderRadius, EntityType entityType) {
+	public static Entity registerEntity(Vector2 position, TextureRegion texture, float rangeColliderRadius, EntityType entityType) {
 		switch(entityType) {
 		case ENEMY:
 			Enemy enemy = new Enemy(position, texture, rangeColliderRadius);

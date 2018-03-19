@@ -2,8 +2,9 @@ package de.dungeonofbale.entity;
 
 import java.awt.Rectangle;
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -14,7 +15,7 @@ import de.dungeonofbale.entity.ai.EntityAIPathfinding;
 import de.dungeonofbale.entity.ai.MovementController;
 import de.dungeonofbale.util.EngineMath;
 
-public abstract class Entity implements Definable {
+public abstract class Entity extends Sprite implements Definable {
 	
 	/* Final Variablen */
 	private final double maxHealth = 100;
@@ -27,9 +28,7 @@ public abstract class Entity implements Definable {
 	/* Private Variablen */
 	private int id;
 	private Vector2 position;
-	private int width;
-	private int height;
-	private Texture texture;
+	private TextureRegion texture;
 	private Rectangle rectangle;
 	private MovementController movementController;
 	
@@ -42,7 +41,7 @@ public abstract class Entity implements Definable {
 	}
 	
 	public Entity(Entity entity) {
-		this(entity.getPosition(), entity.getTexture(), entity.getEntityRangeCollider().getType().radius);
+		this(entity.getPosition(), entity.getTextureRegion(), entity.getEntityRangeCollider().getType().radius);
 	}
 	
 	/**
@@ -50,13 +49,10 @@ public abstract class Entity implements Definable {
 	 * @param position - Die Position wo das Entity gespawnt wird
 	 * @param texture - Die Textur die das Entity haben soll
 	 */
-	public Entity(Vector2 position, Texture texture, float rangeColliderRadius) {
+	public Entity(Vector2 position, TextureRegion texture, float rangeColliderRadius) {
 		this.id = EngineMath.randomIdGenerator();
 		this.position = position;
 		this.texture = texture;
-		this.width = texture.getWidth();
-		this.height = texture.getHeight();
-		this.rectangle = new Rectangle((int) position.x, (int) position.y, width, height);
 		this.aiPathfinding = new EntityAIPathfinding(this);
 		this.aiAttack = new EntityAIAttack(this, attackDamage);
 		this.entityRangeCollider = new EntityRangeCollider(position, rangeColliderRadius);
@@ -102,7 +98,7 @@ public abstract class Entity implements Definable {
 		this.movementController = movementController;
 	}
 
-	public void changeTexture(Texture newTexture) {
+	public void changeTexture(TextureRegion newTexture) {
 		this.texture = newTexture;
 	}
 
@@ -125,25 +121,16 @@ public abstract class Entity implements Definable {
 	}
 	
 	public void dispose() {
-		texture.dispose();
 	}
 	
 	public EntityAIPathfinding getAiPathfinding() {
 		return aiPathfinding;
 	}
 	
-	public int getHeight() {
-		return height;
-	}
-	
 	public double getMaxHealth() {
 		return maxHealth;
 	}
 	
-	public int getWidth() {
-		return width;
-	}
-
 	public MovementController getMovementController() {
 		return movementController;
 	}
@@ -152,7 +139,7 @@ public abstract class Entity implements Definable {
 		return rectangle;
 	}
 	
-	public Texture getTexture() {
+	public TextureRegion getTextureRegion() {
 		return texture;
 	}
 
