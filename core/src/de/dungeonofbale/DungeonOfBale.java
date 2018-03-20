@@ -39,17 +39,18 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	 */
 	public void init() {
 		this.batch = new SpriteBatch();
+		this.world = new World(batch);
+		this.textureAtlas = this.world.getTextureAtlas();
 		/*
 		 * Hier wird der Spieler erstellt 
 		 */
 		this.player = (Player) EntityRegestry.registerEntity(new Vector2(50, 50), this.textureAtlas.findRegion("main_charachter"), 3,
 				EntityType.PLAYER);
-		this.world = new World(batch);
-		this.textureAtlas = this.world.getTextureAtlas();
-
+		
+		
 		/* So erstellt man ein Entity. Dies hier dient nur als Test objekt */
-		EntityRegestry.registerEntity(new Vector2(500, 500), this.textureAtlas.findRegion("bgStone"), 3, EntityType.ENEMY);
-		EntityRegestry.registerEntity(new Vector2(70, 70), this.textureAtlas.findRegion("bgStone"), 3, EntityType.ENEMY);
+		EntityRegestry.registerEntity(new Vector2(500, 500), this.textureAtlas.findRegion("enemy_7"), 3, EntityType.ENEMY);
+		EntityRegestry.registerEntity(new Vector2(70, 70), this.textureAtlas.findRegion("enemy_7"), 3, EntityType.ENEMY);
 		
 	}
 
@@ -98,9 +99,9 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	@Override
 	public void create() {
 		instance = this;
-		this.dobAssetManager = new DOBAssetManager();
-		this.dobAssetManager.loadImages();
-		this.dobAssetManager.getAssetManager().finishLoading();
+//		this.dobAssetManager = new DOBAssetManager();
+//		this.dobAssetManager.loadImages();
+//		this.dobAssetManager.getAssetManager().finishLoading();
 		this.menuScreen = new MenuScreen(this, this);
 		setScreen(menuScreen);
 		Gdx.input.setInputProcessor(menuScreen.getStage());

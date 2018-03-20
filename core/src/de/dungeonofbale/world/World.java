@@ -22,8 +22,7 @@ public class World {
 		this.spriteBatch = spriteBatch;
 		this.gdxWorld = new com.badlogic.gdx.physics.box2d.World(new Vector2(0, 0), true);
 		this.tmxMapLoader = new TmxMapLoader();
-		this.map = tmxMapLoader.load("/map_objects/world.tmx");
-		this.textureAtlas = new TextureAtlas("/map_objects/mapPack.pack");
+		this.textureAtlas = new TextureAtlas("core/assets/entities_gutter.pack");
 		
 		this.worldCreator = new WorldCreator(this);
 		this.worldCreator.generate();

@@ -52,6 +52,7 @@ public abstract class Entity extends Sprite implements Definable {
 	public Entity(Vector2 position, TextureRegion texture, float rangeColliderRadius) {
 		this.id = EngineMath.randomIdGenerator();
 		this.position = position;
+		System.out.println(texture);
 		this.texture = texture;
 		this.aiPathfinding = new EntityAIPathfinding(this);
 		this.aiAttack = new EntityAIAttack(this, attackDamage);
@@ -67,8 +68,6 @@ public abstract class Entity extends Sprite implements Definable {
 	 */
 	public void moveEntity(float speed, float timeSinzeLastFrame) {
 		this.movementController.move(speed, timeSinzeLastFrame);
-		this.rectangle.x = (int) position.x;
-		this.rectangle.y = (int) position.y;
 		this.entityRangeCollider.move(this.position.x, this.position.y);
 	}
 	

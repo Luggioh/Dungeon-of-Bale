@@ -16,7 +16,6 @@ import de.dungeonofbale.ui.UIHandler;
 public class MenuScreen extends AbstractScreen {
 	
 	private SpriteBatch batch;
-	private Sprite sprite;
 	
 	/* Der UIHandler, managed die UIElemente
 	 * UIElemente sind folgende:
@@ -44,8 +43,6 @@ public class MenuScreen extends AbstractScreen {
 		this.batch = new SpriteBatch();
 		/* Der UIHandler wird erstellt */
 		this.uiHandler = new UIHandler(null);
-		this.sprite = new Sprite(dob.getDobAssetManager().getTexture("WaldBG.jpg"));
-		this.sprite.setSize(900, 700);
 		
 		/*Hier wird ein Button hinzugefügt. Gleiches gibt es auch mit TextArea und Label, oder anderen UIElemente*/
 		this.uiHandler.createTextButton("Starten", new Vector2(100, 100), 0, new ButtonClickListener() {
@@ -75,7 +72,6 @@ public class MenuScreen extends AbstractScreen {
 		
 		/* Hier wird die Stage gemalt. Sprich, das was wir oben im Constructor erstellt haben. */
 		this.uiHandler.draw(batch, delta);
-		sprite.draw(batch);
 		
 		batch.end();
 		
