@@ -47,11 +47,17 @@ public class DungeonOfBale extends Game implements InputProcessor {
 				this.textureAtlas.findRegion("main_charachter"), 3, EntityType.PLAYER);
 
 		/* So erstellt man ein Entity. Dies hier dient nur als Test objekt */
+
 		EntityRegestry.registerEntity(new Vector2(500, 500), this.textureAtlas.findRegion("enemy_1"), 3,
 				EntityType.ENEMY);
 		EntityRegestry.registerEntity(new Vector2(70, 70), this.textureAtlas.findRegion("enemy_5"), 3,
 				EntityType.ENEMY);
 
+		EntityRegestry.registerEntity(new Vector2(500, 500), this.textureAtlas.findRegion("main_charachter"), 3, EntityType.ENEMY);
+		EntityRegestry.registerEntity(new Vector2(70, 70), this.textureAtlas.findRegion("main_charachter"), 3, EntityType.ENEMY);
+		
+		EntityRegestry.registerEntity(new Vector2(500, 500), this.textureAtlas.findRegion("enemy_5"), 3, EntityType.ENEMY);
+		EntityRegestry.registerEntity(new Vector2(70, 70), this.textureAtlas.findRegion("enemy_5"), 3, EntityType.ENEMY);
 	}
 
 	/**
