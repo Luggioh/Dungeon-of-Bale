@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
 import de.dungeonofbale.entity.Entity;
 import de.dungeonofbale.entity.EntityRegestry;
@@ -32,6 +33,7 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	private MenuScreen menuScreen;
 	private DOBAssetManager dobAssetManager;
 	private World world;
+	private Box2DDebugRenderer debug;
 
 	/**
 	 * Diese Methode wird in der Methode: {@link GameScreen#show()} aufgerufen.
@@ -39,6 +41,8 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	public void init() {
 		this.batch = new SpriteBatch();
 		this.world = new World(batch);
+		debug = new Box2DDebugRenderer();
+		debug.SHAPE_STATIC.set(1, 0, 0, 1);
 		this.textureAtlas = this.world.getTextureAtlas();
 		/*
 		 * Hier wird der Spieler erstellt
@@ -75,8 +79,10 @@ public class DungeonOfBale extends Game implements InputProcessor {
 		this.player.updateCamera();
 		this.player.moveEntity(delta);
 
+		this.world.updateCamera(this.player.getCamera());
+		
 		batch.begin();
-
+		this.debug.render(this.world.getGdxWorld(), this.player.getCamera().combined);
 		this.world.render();
 
 		/* Die Camera des Spielers wird hier an dem Spritebatch regestriert */
