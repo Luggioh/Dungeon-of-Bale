@@ -25,14 +25,13 @@ import de.dungeonofbale.world.World;
 public class DungeonOfBale extends Game implements InputProcessor {
 
 	private static DungeonOfBale instance;
-	
+
 	private TextureAtlas textureAtlas;
 	private Player player;
 	private SpriteBatch batch;
 	private MenuScreen menuScreen;
 	private DOBAssetManager dobAssetManager;
 	private World world;
-	
 
 	/**
 	 * Diese Methode wird in der Methode: {@link GameScreen#show()} aufgerufen.
@@ -42,16 +41,17 @@ public class DungeonOfBale extends Game implements InputProcessor {
 		this.world = new World(batch);
 		this.textureAtlas = this.world.getTextureAtlas();
 		/*
-		 * Hier wird der Spieler erstellt 
+		 * Hier wird der Spieler erstellt
 		 */
-		this.player = (Player) EntityRegestry.registerEntity(new Vector2(50, 50), this.textureAtlas.findRegion("main_charachter"), 3,
-				EntityType.PLAYER);
-		
-		
+		this.player = (Player) EntityRegestry.registerEntity(new Vector2(50, 50),
+				this.textureAtlas.findRegion("main_charachter"), 3, EntityType.PLAYER);
+
 		/* So erstellt man ein Entity. Dies hier dient nur als Test objekt */
-		EntityRegestry.registerEntity(new Vector2(500, 500), this.textureAtlas.findRegion("main_charachter"), 3, EntityType.ENEMY);
-		EntityRegestry.registerEntity(new Vector2(70, 70), this.textureAtlas.findRegion("main_charachter"), 3, EntityType.ENEMY);
-		
+		EntityRegestry.registerEntity(new Vector2(500, 500), this.textureAtlas.findRegion("enemy_1"), 3,
+				EntityType.ENEMY);
+		EntityRegestry.registerEntity(new Vector2(70, 70), this.textureAtlas.findRegion("enemy_5"), 3,
+				EntityType.ENEMY);
+
 	}
 
 	/**
@@ -64,13 +64,13 @@ public class DungeonOfBale extends Game implements InputProcessor {
 		/* Die color wird über GL20 gesetzt */
 		Gdx.gl.glClearColor(0, 0.5f, 0.5f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
+
 		/* Der Spieler wird geupdated. */
 		this.player.updateCamera();
 		this.player.moveEntity(delta);
-		
+
 		batch.begin();
-		
+
 		this.world.render();
 
 		/* Die Camera des Spielers wird hier an dem Spritebatch regestriert */
@@ -99,9 +99,9 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	@Override
 	public void create() {
 		instance = this;
-//		this.dobAssetManager = new DOBAssetManager();
-//		this.dobAssetManager.loadImages();
-//		this.dobAssetManager.getAssetManager().finishLoading();
+		// this.dobAssetManager = new DOBAssetManager();
+		// this.dobAssetManager.loadImages();
+		// this.dobAssetManager.getAssetManager().finishLoading();
 		this.menuScreen = new MenuScreen(this, this);
 		setScreen(menuScreen);
 		Gdx.input.setInputProcessor(menuScreen.getStage());
@@ -120,7 +120,7 @@ public class DungeonOfBale extends Game implements InputProcessor {
 	public void dispose() {
 		/* Hier werden die Sachen aus dem Speicher genommen */
 	}
-	
+
 	public DOBAssetManager getDobAssetManager() {
 		return dobAssetManager;
 	}
