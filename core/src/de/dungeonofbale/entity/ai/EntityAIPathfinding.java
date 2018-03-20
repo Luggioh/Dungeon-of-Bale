@@ -55,8 +55,6 @@ public class EntityAIPathfinding {
 		}
 		
 		if (changed) {
-			other.getRectangle().x = (int) other.getPosition().x;
-			other.getRectangle().y = (int) other.getPosition().y;
 			other.getEntityRangeCollider().move(other.getPosition().x, other.getPosition().y);
 		}
 

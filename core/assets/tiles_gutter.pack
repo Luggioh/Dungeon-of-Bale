@@ -1,5 +1,5 @@
 
-item_tiles_gutter.png
+tiles_gutter.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
