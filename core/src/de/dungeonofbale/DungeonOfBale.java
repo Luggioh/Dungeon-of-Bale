@@ -52,8 +52,8 @@ public class DungeonOfBale extends Game implements InputProcessor {
 		EntityRegestry.registerEntity(new Vector2(500, 500), this.textureAtlas.findRegion("main_charachter"), 3, EntityType.ENEMY);
 		EntityRegestry.registerEntity(new Vector2(70, 70), this.textureAtlas.findRegion("main_charachter"), 3, EntityType.ENEMY);
 		
-		EntityRegestry.registerEntity(new Vector2(500, 500), this.textureAtlas.findRegion("enemy_5"), 3, EntityType.ENEMY);
-		EntityRegestry.registerEntity(new Vector2(70, 70), this.textureAtlas.findRegion("enemy_5"), 3, EntityType.ENEMY);
+		EntityRegestry.registerEntity(new Vector2(500, 500), this.textureAtlas.findRegion("enemy_6"), 3, EntityType.ENEMY);
+		EntityRegestry.registerEntity(new Vector2(70, 70), this.textureAtlas.findRegion("enemy_6"), 3, EntityType.ENEMY);
 	}
 
 	/**
