@@ -1,6 +1,5 @@
 package de.dungeonofbale.screen;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -37,8 +36,7 @@ public class MenuScreen extends AbstractScreen {
 	 * @param game
 	 * @param dob
 	 */
-	public MenuScreen(Game game, DungeonOfBale dob) {
-		super(game, dob);
+	public MenuScreen() {
 		this.batch = new SpriteBatch();
 		/* Der UIHandler wird erstellt */
 		this.uiHandler = new UIHandler(null);
@@ -48,7 +46,7 @@ public class MenuScreen extends AbstractScreen {
 			
 			@Override
 			public void buttonClick(InputEvent paramEvent, float paramX, float paramY) {
-				game.setScreen(new GameScreen(game, dob));
+				DungeonOfBale.getInstance().setScreen(new GameScreen());
 			}
 		});
 		
@@ -69,7 +67,6 @@ public class MenuScreen extends AbstractScreen {
 		
 		batch.begin();
 		
-		/* Hier wird die Stage gemalt. Sprich, das was wir oben im Constructor erstellt haben. */
 		this.uiHandler.draw(batch, delta);
 		
 		batch.end();

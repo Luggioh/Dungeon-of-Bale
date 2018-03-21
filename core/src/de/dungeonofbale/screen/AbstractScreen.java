@@ -7,14 +7,6 @@ import de.dungeonofbale.DungeonOfBale;
 
 public abstract class AbstractScreen implements Screen {
 	
-	protected Game game;
-	protected DungeonOfBale dob;
-	
-	public AbstractScreen(Game game, DungeonOfBale dob) {
-		this.game = game;
-		this.dob = dob;
-	}
-	
 	@Override
 	public abstract void show();
 	
