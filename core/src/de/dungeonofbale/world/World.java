@@ -22,14 +22,17 @@ public class World {
 	private WorldCreator worldCreator;
 	private OrthogonalTiledMapRenderer renderer;
 	private Box2DDebugRenderer debug;
+	private WorldContactListener worldContactListener;
 	
 	public World(SpriteBatch spriteBatch) {
 		this.spriteBatch = spriteBatch;
-		this.gdxWorld = new com.badlogic.gdx.physics.box2d.World(new Vector2(1, 0), true);
+		this.gdxWorld = new com.badlogic.gdx.physics.box2d.World(new Vector2(0, 0), true);
 		this.tmxMapLoader = new TmxMapLoader();
 		this.map = tmxMapLoader.load("core/assets/world.tmx");
 		this.textureAtlas = new TextureAtlas("core/assets/entities_gutter.pack");
 		this.renderer = new OrthogonalTiledMapRenderer(map, 1);
+		this.worldContactListener = new WorldContactListener();
+		this.gdxWorld.setContactListener(this.worldContactListener);
 		
 		this.worldCreator = new WorldCreator(this);
 		this.worldCreator.generate();
