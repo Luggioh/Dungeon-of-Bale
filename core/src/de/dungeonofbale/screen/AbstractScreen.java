@@ -1,9 +1,6 @@
 package de.dungeonofbale.screen;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
-
-import de.dungeonofbale.DungeonOfBale;
 
 public abstract class AbstractScreen implements Screen {
 	

@@ -30,8 +30,8 @@ public class GameScreen extends AbstractScreen {
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false);
 		this.world = new World(batch);
-		this.player = new Player(this.world.getTextureAtlas().findRegion("main_charachter"), new Vector2(500, 500), world);
-		this.testEnemy = new Enemy(this.world.getTextureAtlas().findRegion("enemy_3"), new Vector2(550, 500), world);
+		this.player = new Player(this.world.getTextureManager().getTextureAtlas("entities").findRegion("main_charachter"), new Vector2(500, 500), world);
+		this.testEnemy = new Enemy(this.world.getTextureManager().getTextureAtlas("entities").findRegion("enemy_3"), new Vector2(550, 500), world);
 	}
 
 	public void update(float delta) {
