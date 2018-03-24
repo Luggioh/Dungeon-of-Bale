@@ -34,14 +34,26 @@ public class WorldContactListener implements ContactListener {
         	//Hier wird der Player und der Enemy geholt. Die getEntityBy2Fixtures Methode schaut, welche Fixture was ist.
         	Player player = Entity.getEntityBy2Fixtures(fixA, fixB, Player.class);
     		Enemy enemy = Entity.getEntityBy2Fixtures(fixA, fixB, Enemy.class);
-    		player.health -= enemy.getDamage();
-    		System.out.println("PLAYER HEALTH: " + player.health);
+//    		player.updateHealth(player.getHealth() - enemy.getDamage());
+//    		System.out.println("PLAYER HEALTH: " + player.getHealth());
+    		enemy.attack(player);
         }
 	}
 	
 	@Override
 	public void endContact(Contact contact) {
-		
+		Fixture fixA = contact.getFixtureA(); 
+        Fixture fixB = contact.getFixtureB(); 
+
+        int cDef = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;
+        
+        switch(cDef) {
+        case BitList.BIT_COLLISION_SHAPE | BitList.BIT_COLLISION_SHAPE:
+    		Enemy enemy = Entity.getEntityBy2Fixtures(fixA, fixB, Enemy.class);
+    		enemy.endAttack();
+//    		player.updateHealth(player.getHealth() - enemy.getDamage());
+//    		System.out.println("PLAYER HEALTH: " + player.getHealth());
+        }
 	}
 
 	@Override

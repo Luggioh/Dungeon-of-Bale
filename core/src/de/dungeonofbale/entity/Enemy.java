@@ -8,16 +8,18 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
+import de.dungeonofbale.entity.ai.AIAttack;
 import de.dungeonofbale.util.BitList;
 import de.dungeonofbale.world.World;
 
 public class Enemy extends Entity {
 	
-	private float damage;
+	private AIAttack aiAttack;
 	
 	public Enemy(TextureRegion textureRegion, Vector2 startPosition, World world) {
-		super(textureRegion, startPosition, world);
+		super(textureRegion, startPosition, world, 100);
 		this.damage = 20;
+		this.aiAttack = new AIAttack(this, 5);
 	}
 
 	@Override
@@ -54,10 +56,15 @@ public class Enemy extends Entity {
 	@Override
 	public void update(float delta) {
 		setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+		this.aiAttack.checkAttack();
 	}
 	
-	public float getDamage() {
-		return damage;
+	public void endAttack() {
+		this.aiAttack.endAttack();
 	}
-
+	
+	public void attack(Entity other) {
+		this.aiAttack.attack(other);
+	}
+	
 }

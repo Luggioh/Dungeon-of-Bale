@@ -18,15 +18,12 @@ public class Player extends Entity {
 	//Die Gewschindigkeit des Spielers
 	private final float speed = 0.1f;
 	
-	//Die Maximale Gesundheit des Spielers
-	private final float maxHealth = 100;
+	private boolean canAttack;
 	
-	//Leben des Spieler, als public damit man es von überall ändern kann.
-	public float health;
-
 	public Player(TextureRegion textureRegion, Vector2 startPosition, World world) {
-		super(textureRegion, startPosition, world);
-		this.health = maxHealth;
+		super(textureRegion, startPosition, world, 100);
+		this.damage = 20;
+		this.canAttack = false;
 	}
 
 	@Override
@@ -130,6 +127,9 @@ public class Player extends Entity {
 			this.body.applyLinearImpulse(new Vector2(0, -speed), this.body.getWorldCenter(), true);
 		}
 	}
-
-
+	
+	public boolean canAttack() {
+		return this.canAttack;
+	}
+	
 }
